@@ -5,6 +5,10 @@ __pycache__/
 
 # C extensions
 *.so
+env/
+__pychace__/
+*.jpg
+inswapper_128.onnx
 
 # Distribution / packaging
 .Python
