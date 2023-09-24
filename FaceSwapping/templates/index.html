@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Swapper</title>
+    <link rel="stylesheet" href="{{url_for("static", filename="style.css" )}}">
+</head>
+
+<body>
+    <nav>
+        <a href="/">Face Swapper</a>
+    </nav>
+    <section id="home">
+        <form id="form" class="container-wrapper" enctype="multipart/form-data">
+            <div class="rotate-container">
+                <div class="input-div">
+                    <div>
+                        <h2>Select your source and target image</h2>
+                    </div>
+                    <div class="container">
+                        <div>
+                            <p>Source</p>
+                            <img id="sourcePreview" src="{{url_for("static", filename="avatar.webp" )}}" alt="source">
+                            <div class="image-selector">
+                                <input
+                                    type="file" 
+                                    accept="image/png, image/jpg, image/jpeg, image/webp"
+                                    name="source"
+                                    id="source"
+                                >
+                                <label for="source">
+                                    <ion-icon name="camera-outline"></ion-icon>
+                                </label>
+                            </div>
+                        </div>
+                        <div>
+                            <p>Target</p>
+                            <img id="targetPreview" src="{{url_for("static", filename="avatar.webp" )}}" alt="target">
+                            <div class="image-selector">
+                                <input
+                                    type="file" 
+                                    accept="image/png, image/jpg, image/jpeg, image/webp"
+                                    name="target"
+                                    id="target"
+                                >
+                                <label for="target">
+                                    <ion-icon name="camera-outline"></ion-icon>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-section">
+                        <button type="submit" id="swap-btn">
+                            <span>Swap Face</span>
+                            <ion-icon name="play-forward"></ion-icon>
+                        </button>
+                    </div>
+                </div>
+                <div class="result">
+                    <div>
+                         <h2>Result</h2>
+                         <img id="result-img" src="{{url_for('static', filename='result.jpg')}}">
+                         <div class="btn-section">
+                            <button type="button" id="back">
+                                <ion-icon name="caret-back-outline"></ion-icon>
+                                <span>Back</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="spinner-wrapper" id="loader">
+                <div class="spinner"></div>
+            </div>
+        </form>
+    </section>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="{{url_for("static", filename="app.js")}}"></script>
+</body>
+</html>

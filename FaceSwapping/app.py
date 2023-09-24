@@ -5,7 +5,7 @@
 
 """
 
-from flask import Flask, request, redirect, send_file, jsonify
+from flask import Flask, request, redirect, send_file, jsonify, render_template, url_for
 from insightface.app import FaceAnalysis
 import insightface
 import cv2
@@ -61,7 +61,7 @@ def swap_faces(target, source, show_only=False):
 
 @app.route('/')
 def index():
-    return "Welcome to Face Swapping API"
+    return render_template("index.html")
 
 @app.route('/swap', methods=['POST', 'GET'])
 def swap():
@@ -71,18 +71,27 @@ def swap():
             source_file = request.files['source']
             target_file = request.files['target']
 
-            source_file.save("source.jpg")
-            target_file.save("target.jpg")
+            source_file.save("static/source.jpg")
+            target_file.save("static/target.jpg")
             
-            source = cv2.imread("source.jpg")
-            target = cv2.imread("target.jpg")
+            source = cv2.imread("static/source.jpg")
+            target = cv2.imread("static/target.jpg")
 
+            if source is None:
+                raise FileNotFoundError("Source not found")
+            if target is None:
+                raise FileNotFoundError("Target not found")
+            
             res = swap_faces(target, source)
-            cv2.imwrite("result.jpg", res)
-            return send_file("result.jpg", mimetype="image/jpg")
+            cv2.imwrite("static/result.jpg", res)
+            return jsonify({
+                "url" : 'result.jpg',
+                "success":"true"
+            })
         except Exception as e:
             print(e)
             return jsonify({
+                "success":"false",
                 "status":"400",
                 "message":"Unable to find source or target file."
             })

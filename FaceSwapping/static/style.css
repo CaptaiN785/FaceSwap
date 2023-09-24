@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+body{
+    width:100%;
+    height: 100%;
+    font-family: "Poppins", sans-serif;
+}
+nav{
+    padding:1rem 3rem;
+    background:#00c3ff;
+    position: fixed;
+    top:0;
+    right:0;
+    left:0;
+}
+nav a{
+    text-decoration: none;
+    font-size:2rem;
+    color:#fff;
+    font-weight: 500;
+}
+#home{
+    background:#d5f4fe;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.container-wrapper{
+    position: relative;
+    background:#fff;
+    padding:2rem;
+    border-radius: 1rem;
+    text-align: center;
+    box-shadow: 
+        0 0 20px #ddd,
+        0 0 40px #bbb;
+    width:600px;
+    height:500px;
+}
+.rotate-container{
+    position: relative;
+    transition: all 0.8s ease;
+    transform-style: preserve-3d;
+    perspective: 10000px;
+}
+.input-div, .result{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.input-div {
+    backface-visibility: hidden;
+    z-index: 10000;
+}
+.container-wrapper h2{
+    font-weight: 400;
+    margin-bottom:1rem;
+}
+.input-div > *{
+    background: #fff;;
+}
+.container{
+    display: flex;
+    gap:2rem;
+    justify-content: center;
+    padding:1rem;
+    background:#fff;
+}
+.container > div {
+    width: 250px;
+    height:300px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #00c3ff;
+}
+.container p{
+    text-align: center;
+    padding:1rem;
+    background:#00c3ff;
+    color:#fff;
+    font-weight: 600;
+}
+.container img{
+    width:250px;
+    height: 250px;
+    object-fit: contain;
+}
+.image-selector{
+    position: absolute;
+    bottom:-100%;;
+    background:#00c3ff;
+    opacity: 0.8;
+    width:100%;
+    left:0;
+    transition: all 0.3s ease;
+}
+.image-selector input[type="file"]{
+    display: none;
+}
+.image-selector label{
+    display: block;
+    font-size: 2rem;
+    margin-inline:auto;
+    margin-top: 10px;
+    color:#fff;
+    cursor:pointer;
+}
+.container > div:hover .image-selector{
+    bottom:0;
+}
+.btn-section{
+    width: 100%;;
+}
+.btn-section button{
+    margin-inline:auto;
+    padding:1rem 3rem;
+    display: flex;
+    align-items: center;
+    gap:10px;
+    justify-content: center;
+    font-size:1rem;
+    background:#00c3ff;
+    color:#fff;
+    border:none;
+    outline:none;
+    cursor: pointer;
+}
+.btn-section button ion-icon{
+    font-size:1.2rem;
+    font-weight: bold;
+}
+.result{
+   z-index: -3;
+    height:100%;
+    width: 100%;;
+}
+.result > div{
+    height:100%;
+    position: absolute;
+    top:0;
+    left:50%;
+    transform: translateX(-50%) rotateY(180deg);
+}
+.result > div img{
+    position: relative;
+    height:300px;
+    width:auto;
+    margin-inline: auto; 
+    margin-top: 1rem;
+}
+.result h2{
+    margin:0;
+    color:#00c3ff;
+}
+#back{
+    margin-top:1rem;
+}
+
+
+
+
+.spinner-wrapper{
+    position: fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+.spinner {
+    position: relative;
+    width: 22.4px;
+    height: 22.4px;
+ }
+ 
+ .spinner::before,
+ .spinner::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    display: block;
+    animation: spinner-b4c8mmmd 0.5s backwards, spinner-49opz7md 1.25s 0.5s infinite ease;
+    border: 5.6px solid #00c3ff;
+    border-radius: 50%;
+    box-shadow: 0 -33.6px 0 -5.6px #00c3ff;
+    position: absolute;
+ }
+ 
+ .spinner::after {
+    animation-delay: 0s, 1.25s;
+ }
+ 
+ @keyframes spinner-b4c8mmmd {
+    from {
+       box-shadow: 0 0 0 -5.6px #00c3ff;
+    }
+ }
+ 
+ @keyframes spinner-49opz7md {
+    to {
+       transform: rotate(360deg);
+    }
+ }
